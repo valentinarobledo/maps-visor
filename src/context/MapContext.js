@@ -37,7 +37,7 @@ export function MapProvider({ children }) {
 			try {
 				await firestore.collection('points').add(newPoint);
 				setPoints([...points, newPoint]);
-				//setName('');
+				setName('');
 			} catch (error) {
 				console.error(error);
 			}
