@@ -8,42 +8,59 @@ export default MapContext;
 export function MapProvider({ children }) {
     const [points, setPoints] = useState([]);
     const [name, setName] = useState('');
-    const [position, setPosition] = useState([4.6097, -74.0817]);
   
     useEffect(() => {
       fetchPoints();
     }, []);
   
-       const fetchPoints = async () => {
+    const fetchPoints = async () => {
       try {
         const pointsCollection = await firestore.collection('points').get();
         const pointsArray = pointsCollection.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        console.log('from firestore', pointsArray)
         setPoints(pointsArray);
       } catch (error) {
         console.error(error);
       }
     };
 
-    const addPoint = async (e) => {
-      try {
-        // Your addPoint logic here
-      } catch (error) {
-        console.error(error);
-      }
-    };
+		const addPoint = async (lat, lng) => {
+			//const { lat, lng } = e.latlng;
+			const newPoint = {
+				lat: lat,
+				lng: lng,
+				name: name,
+			};
+		
+			try {
+				await firestore.collection('points').add(newPoint);
+				setPoints([...points, newPoint]);
+				//setName('');
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		const deletePoint = async (point) => {
+			try {
+				await firestore.collection('points').doc(point.id).delete();
+				setPoints(points.filter((p) => p.id !== point.id));
+			} catch (error) {
+				console.error(error);
+			}
+		};
+		
   
   
     const contextValue = {
       points,
 			setPoints,
       name,
-      position,
       fetchPoints,
       addPoint,
+			deletePoint
     
     };
   

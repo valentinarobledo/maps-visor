@@ -5,15 +5,16 @@ function Home(){
 
 	return(
 		<div className="container-fluid">
-			<div className="text-center p-3">
-				<h1>Visor</h1>
-			</div>
 			<div className="row">
-				<div className="col-lg-8">
-					<Map />
+				<div className="col-lg-10">
+					<div className="box-visor">
+						<Map />
+					</div>
 				</div>
-				<div className="col-lg-4">
-					<Table />
+				<div className="col-lg-2">
+					<div className="box-table py-2">
+						<Table />
+					</div>
 				</div>
 			</div>
 		</div>

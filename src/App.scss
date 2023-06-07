@@ -1,13 +1,128 @@
+$primary: #76448A;
+$secundary: #efefef;
+$gris: #5D6D7E;
+$gris2: #839192;
+
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+body{
+  background-color: $secundary;
+}
+
 #root{
   height: 100vh;
 }
+/* width */
+::-webkit-scrollbar {
+  width: .2rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $primary; 
+}
 
 .leaflet-container{
-  height: 80vh;
+  height: 85vh;
+}
+
+
+input{
+  outline: none;
+  border: 1px solid black;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.box-visor{
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.color-primary{
+  color: $primary;
+}
+
+.color-secundary{
+  color: $secundary;
+}
+.color-white{
+  color: white;
+}
+.gris{
+  color: $gris;
+}
+.gris2{
+  color: $gris2;
+}
+
+.bg-white{
+  background-color: white;
+}
+
+.bg-primary{
+  background-color: $primary;
+}
+
+.bg-secundary{
+  background-color: $secundary;
+}
+.bg-gris{
+  background-color: $gris;
+}
+.bg-gris2{
+  background-color: $gris2;
+}
+
+.header{
+  box-shadow: 0px 3px 5px rgb(95, 95, 95);
+}
+.box-items{
+  max-height: 90vh;
+  overflow-y: auto;
+  .box-item{
+
+    width: 95%;
+    margin: 0 auto;
+    padding: 0.8rem;
+    border-radius: .5rem;
+    position: relative;
+    box-shadow: 0px 1px 5px rgb(95, 95, 95);
+    transition: all .3s ease-in-out;
+    &:hover{
+      box-shadow: 0px 1px 3px rgb(95, 95, 95);
+    }
+    .delete{
+      position: absolute;
+      top: 2%;
+      right: 2%;
+    }
+    p{
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    span{
+      font-size: .8rem;
+    }
+  }
+}
+
+.footer{
+  background-color: $gris;
+  a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
 }
